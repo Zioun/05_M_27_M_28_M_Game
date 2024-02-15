@@ -20,11 +20,13 @@
 
 function handleKeyboardButtonPress(event){
     let keyPress = event.key;
+    if(keyPress === "Escape"){
+        gameOver();
+    }
 
     let currentAlphabet = document.getElementById("current-alphabet");
     let currentAlphabetText = currentAlphabet.innerText;
     let currentAlphabetTextLower = currentAlphabetText.toLowerCase();
-    console.log(keyPress,currentAlphabetTextLower)
 
     if(keyPress === currentAlphabetTextLower){
         removeBackgroundById(keyPress)
@@ -42,6 +44,10 @@ function handleKeyboardButtonPress(event){
         let lifeTextInt = parseInt(lifeTextInerText);
         let life = lifeTextInt - 1;
         lifeText.innerText = life;
+
+        if(life === 0){
+            gameOver()
+        }
     }
 }
 document.addEventListener("keyup",handleKeyboardButtonPress);
@@ -61,6 +67,30 @@ function continueGame(){
 function play(){
     hideElementById("home-screen");
     showElementById("play-ground");
+
+    hideElementById("final-score");
+    showElementById("play-ground");
+
+    setElementValueById('life', 5);
+    setElementValueById('score', 0);
+
     continueGame();
 }
+
+function gameOver(){
+    hideElementById("play-ground");
+    showElementById("final-score");
+
+    let lastScore = document.getElementById("score");
+    let lastScoreInner = lastScore.innerText;
+
+    setElementValueById('game-score',lastScoreInner);
+
+
+    let currentAlphabet = document.getElementById("current-alphabet");
+    let currentAlphabetInner = currentAlphabet.innerText;
+    removeBackgroundById(currentAlphabetInner);
+    
+}
+
 
