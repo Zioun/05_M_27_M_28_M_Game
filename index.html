@@ -15,11 +15,21 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="style.css">
-
+    <link rel="shortcut icon" href="images/play.png" type="image/x-icon">
     <title>Alpha Clash Pro</title>
 </head>
 <body>
     <main class="bg-[#1E1E1E] min-h-screen bg-[url(images/background.png)] bg-no-repeat bg-center bg-top">
+        <!-- modal -->
+        <div id="modalBox" class="absolute hidden">
+            <div class="modal-box">
+                <form method="dialog">
+                <button id="modalClose" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <h3 class="font-bold text-lg">Hello!</h3>
+                <p class="py-4">Press ESC key or click on ✕ button to close</p>
+            </div>
+        </div>
         <!-- home start -->
         <section id="home-screen" class="min-h-screen text-white flex justify-center items-center">
             <div class="flex flex-col items-center gap-10">
@@ -34,7 +44,7 @@
         <section id="play-ground" class="hidden">
             <div class="flex flex-col items-center gap-20 pt-20">
                 <!-- screen start -->
-                <div class="artboard artboard-horizontal phone-6 border-[#010313cc] border-[20px] rounded-2xl bg-[#ffffffb3]">
+                <div id="artboard" class="artboard artboard-horizontal phone-6 border-[#010313cc] border-[20px] rounded-2xl bg-[#ffffffb3]">
                     <div class="flex justify-center">
                         <p class="bg-[#2f2941] px-6 pb-4 rounded-b-xl text-white">Don't watch keyboard  while playing...</p>
                     </div>
@@ -113,6 +123,9 @@
             </div>
         </section>
         <!-- score ended -->
+        <!-- You can open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
+        
     </main>
     <script src="scripts/utility.js"></script>
     <script src="scripts/alpha-clash.js"></script>
